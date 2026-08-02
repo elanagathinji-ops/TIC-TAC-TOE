@@ -19,12 +19,6 @@ while True:
 
 grid = [[' ' for k in range(3)] for j in range(3)]
 
-# grid = [
-#    [" ", " ", " "],
-#   [" ", " ", " "],
-#  [" ", " ", " "]
-# ]
-
 
 def print_grid(grid):
     for row in grid:
@@ -35,24 +29,38 @@ def print_grid(grid):
 print_grid(grid)
 
 # Choose a coordinate on a grid
-while True:
-    row = '2'  # (input(" Select a row (1,2 or 3): "))
-    # in case input is not a valid number
-    if row == '1' or row == '2' or row == '3':
-        row = int(row)
-        break
-    else:
-        print("Invalid input - please enter either 1, 2 or 3")
-while True:
-    column = '3'  # (input("Select a column (1,2 or 3): "))
-    if column == '1' or column == '2' or column == '3':
-        column = int(column)
-        break
-    else:
-        print("Invalid input - please enter either 1, 2 or 3")
 
-grid[row-1][column-1] = "X"
-print_grid(grid)
+
+def choose_coord():
+    while True:
+        row = '2'  # (input(" Select a row (1,2 or 3): "))
+        # in case input is not a valid number
+        if row == '1' or row == '2' or row == '3':
+            row = int(row)
+            break
+        else:
+            print("Invalid input - please enter either 1, 2 or 3")
+    while True:
+        column = '3'  # (input("Select a column (1,2 or 3): "))
+        if column == '1' or column == '2' or column == '3':
+            column = int(column)
+            break
+        else:
+            print("Invalid input - please enter either 1, 2 or 3")
+    return [row-1,  column-1]
+
+
+# Draw 'X' or 'O' in the grid
+# Check if coord is already full
+x = choose_coord()
+row = x[0]
+column = x[1]
+if grid[row][column] != " ":
+    print("Oops! That spot is taken, try again:")
+    choose_coord()
+else:
+    grid[row][column] == 'X'
+    print_grid(grid)
 
 choice *= -1
 if choice == 1:
