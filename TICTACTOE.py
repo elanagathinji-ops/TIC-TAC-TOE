@@ -35,8 +35,22 @@ def print_grid(grid):
 print_grid(grid)
 
 # Choose a coordinate on a grid
-row = 2  # int(input(" Select a row (1,2 or 3): "))
-column = 3  # int(input("Select a column (1,2 or 3): "))
+while True:
+    row = '2'  # (input(" Select a row (1,2 or 3): "))
+    # in case input is not a valid number
+    if row == '1' or row == '2' or row == '3':
+        row = int(row)
+        break
+    else:
+        print("Invalid input - please enter either 1, 2 or 3")
+while True:
+    column = '3'  # (input("Select a column (1,2 or 3): "))
+    if column == '1' or column == '2' or column == '3':
+        column = int(column)
+        break
+    else:
+        print("Invalid input - please enter either 1, 2 or 3")
+
 grid[row-1][column-1] = "X"
 print_grid(grid)
 
