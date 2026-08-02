@@ -52,15 +52,20 @@ def choose_coord():
 
 # Draw 'X' or 'O' in the grid
 # Check if coord is already full
-x = choose_coord()
-row = x[0]
-column = x[1]
-if grid[row][column] != " ":
-    print("Oops! That spot is taken, try again:")
-    choose_coord()
-else:
-    grid[row][column] == 'X'
+def draw_symbol():
+    x = choose_coord()
+    row = x[0]
+    column = x[1]
+    if grid[row][column] != " ":
+        print("Oops! That spot is taken, try again:")
+        choose_coord()
+    else:
+        if choice == 1:
+            grid[row][column] == 'X'
+        else:
+            grid[row][column] == 'O'
     print_grid(grid)
+
 
 choice *= -1
 if choice == 1:
