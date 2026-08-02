@@ -2,24 +2,46 @@
 
 import random
 print("**** Welcome to TIC TAC TOE!**** \n")
-p1 = 'tim'  # input("Enter a name for Player 1: ")
-p2 = 'sarah'  # input("Enter a name for Player 2: ")
+p1 = 'tim'  # input("Enter a name for Player 1: ").title()
+p2 = 'sarah'  # input("Enter a name for Player 2: ").title()
 
 # Randomly allocate who goes first
-choice = random.randint(1, 2)
+while True:
+    choice = random.randint(-1, 1)
+    if choice == 1:
+        print(f"{p1} goes first! \n")
+        break
+    elif choice == -1:
+        print(f"{p2} goes first! \n ")
+        break
+    else:
+        continue
+
+grid = [[' ' for k in range(3)] for j in range(3)]
+
+# grid = [
+#    [" ", " ", " "],
+#   [" ", " ", " "],
+#  [" ", " ", " "]
+# ]
+
+
+def print_grid(grid):
+    for row in grid:
+        print(" | ".join(row))
+        print("-" * 9)
+
+
+print_grid(grid)
+
+# Choose a coordinate on a grid
+row = 2  # int(input(" Select a row (1,2 or 3): "))
+column = 3  # int(input("Select a column (1,2 or 3): "))
+grid[row-1][column-1] = "X"
+print_grid(grid)
+
+choice *= -1
 if choice == 1:
-    print(f"{p1.title()} goes first! \n")
+    print(f"Now its {p1}'s turn! \n")
 else:
-    print(f"{p2.title()} goes first! \n ")
-
-
-blank = ' '*11
-row = blank + '|' + blank + '|' + blank
-grid = (
-    '* '*18 + '\n' +
-    ((row + '\n')*5 +
-     '~'*35 + '\n')*2 +
-    (row + '\n')*5 +
-    '* '*18 + '\n'
-)
-print(grid)
+    print(f"Now its {p2}'s turn! \n")
