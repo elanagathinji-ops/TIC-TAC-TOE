@@ -64,28 +64,52 @@ def draw_symbol():
             break
     return grid
 
-
-# check for
-
 # Switch turns
 
+
 def switch_turns():
+    global choice
     choice *= -1
     if choice == 1:
-        print(f"Now its {p1}'s turn! \n")
+        return (f"Now its {p1}'s turn! \n")
     else:
-        print(f"Now its {p2}'s turn! \n")
+        return (f"Now its {p2}'s turn! \n")
 
 
 # Need to check if play has won after 3 turns
 def game_status():
+
+    # Check rows
     for row in grid:
-        if row == ['X', 'X', 'X'] or row[0] == row[1] and row[1] == row[2] and row[0] == "X":
-            print(f"Congratulations, {p1}! You win!")
-        elif row == ['O', 'O', 'O'] or row[0] == row[1] and row[1] == row[2] and row[0] == "O":
-            print(f"Congratulations, {p2}! You win!")
+        if row == ['X', 'X', 'X'] or row == ['O', 'O', 'O']:
+            win = True
+            break
         else:
             continue
+
+    # Check columns
+    for i in range(0, 3):
+        if grid[0][i] == grid[1][i] and grid[0][i] == grid[2][i] and grid[0][i] != " ":
+            win = True
+            break
+        else:
+            continue
+
+    # Check diagonals
+    if grid[0][0] == grid[1][1] and grid[0][0] == grid[2][2] and grid[0][0] != " ":
+        win = True
+    elif grid[0][2] == grid[1][1] and grid[1][1] == grid[2][0] and grid[1][1] != " ":
+        win = True
+    else:
+        win = False
+
+    if win == True:
+        if choice == 1:
+            return (f"Congratulations, {p1}! You win!")
+        else:
+            return (f"Congratulations, {p2}! You win!")
+    else:
+        print(switch_turns())
 
 
 # Game must end if a player wins or board is full (=draw)
@@ -93,7 +117,7 @@ def game_status():
 print_grid(grid)
 # Game play
 
-
+while
 draw_symbol()
 print()
 print_grid(grid)
